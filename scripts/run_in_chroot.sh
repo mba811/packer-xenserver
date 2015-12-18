@@ -2,8 +2,6 @@
 
 mount /dev/sda1 /mnt
 
-ln -s ../init.d/veryfirstboot /mnt/etc/rc3.d/S03veryfirstboot
-
 # Put some things into the chroot
 wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub' -O /tmp/vagrant.pub
 cp /tmp/chroot_script.sh /mnt/tmp/
