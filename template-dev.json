@@ -19,25 +19,19 @@
         },
         {
             "type": "file",
-            "source": "scripts/chroot_script_public.sh",
-            "destination": "/tmp/chroot_script_public.sh"
+            "source": "scripts/chroot_script_dev.sh",
+            "destination": "/tmp/chroot_script_dev.sh"
         },
         {
             "type": "file",
-            "source": "scripts/dhcp-everything",
-            "destination": "/tmp/dhcp-everything"
-        },
-        {
-	    "type": "file",
-            "source": "scripts/install_dhcp_everything.sh",
-            "destination": "/tmp/install_dhcp_everything.sh"
+            "source": "scripts/verylastboot",
+            "destination": "/tmp/verylastboot"
         },
         {
             "type": "shell",
             "scripts": [
                 "scripts/wait_for_installer.sh",
-                "scripts/run_in_chroot.sh",
-		"scripts/install_dhcp_everything.sh"
+                "scripts/run_in_chroot.sh"
             ]
         }
     ],
@@ -59,7 +53,7 @@
             "guest_os_type": "RedHat_64",
             "http_directory": "http",
             "iso_checksum_type": "none",
-            "iso_url": "file:///home/jludlam/xenserverorg-main.iso",
+            "iso_url": "http://coltrane.uk.xensource.com/usr/groups/build/{{user `branch`}}/{{user `version`}}/xe-phase-1/main.iso",
             "shutdown_command": "/sbin/shutdown -hP now",
             "ssh_password": "password",
             "ssh_port": 22,
@@ -92,7 +86,7 @@
  	    "http_port_min": 2375,
 	    "http_port_max": 2376,
             "iso_checksum_type": "none",
-            "iso_url": "http://downloadns.citrix.com.edgesuite.net/8170/2015-12-14/main.iso",
+            "iso_url": "http://coltrane.uk.xensource.com/usr/groups/build/{{user `branch`}}/{{user `version`}}/xe-phase-1/main.iso",
             "output_directory": "{{user `outputdir`}}",
             "shutdown_command": "/sbin/shutdown -hP now > /dev/null &",
             "ssh_password": "password",

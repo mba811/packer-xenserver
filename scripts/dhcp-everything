@@ -9,6 +9,7 @@ if [ ! -e $stamp ]; then
 
   for i in `xe pif-list --minimal | sed s/,/\ /g`; do
     xe pif-reconfigure-ip uuid=$i mode=dhcp
+    xe pif-unplug uuid=$i
     xe pif-plug uuid=$i
   done
 
