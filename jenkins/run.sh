@@ -19,7 +19,7 @@ boxdir=$boxbasedir/tmp-$branch
 
 rm -rf $boxdir
 mkdir -p $boxdir
-packer build -only=xenserver-iso -var "branch=$branch" -var "xshost=$server" -var "xspassword=$password" -var "outputdir=$boxdir" -var "version=$VERSION" template.json
+packer build -only=xenserver-iso -var "branch=$branch" -var "xshost=$server" -var "xspassword=$password" -var "outputdir=$boxdir" -var "version=$VERSION" template-dev.json
 rm -rf packer_cache/*
 mv $boxdir/*.vhd $boxdir/box.vhd
 echo "{\"provider\": \"xenserver\"}" > $boxdir/metadata.json
