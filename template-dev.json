@@ -2,8 +2,8 @@
     "variables": { 
         "branch": "trunk",
         "version": "latest",
-        "xshost": "",
-        "xspassword": "",
+        "xshost": "gandalf.uk.xensource.com",
+        "xspassword": "xenroot",
         "outputdir": "/tmp/"
     },
     "provisioners": [
@@ -24,16 +24,22 @@
         },
         {
             "type": "file",
-            "source": "scripts/verylastboot",
-            "destination": "/tmp/verylastboot"
+            "source": "scripts/dhcp-everything",
+            "destination": "/tmp/dhcp-everything"
+        },
+        {
+	    "type": "file",
+            "source": "scripts/install_dhcp_everything.sh",
+            "destination": "/tmp/install_dhcp_everything.sh"
         },
         {
             "type": "shell",
             "scripts": [
                 "scripts/wait_for_installer.sh",
-                "scripts/run_in_chroot.sh"
+                "scripts/run_in_chroot.sh",
+		"scripts/install_dhcp_everything.sh"
             ]
-        }
+	}
     ],
     "builders": [
         {
@@ -99,6 +105,7 @@
     ],
     "post-processors": [
          {
+	    "only": ["virtualbox-iso"],
             "compression_level": 9,
             "output": "XenServer.box",
             "type": "vagrant",

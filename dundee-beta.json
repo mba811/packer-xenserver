@@ -69,12 +69,14 @@
     ],
     "post-processors": [
          [{
+	    "only": ["virtualbox-iso"],
             "compression_level": 9,
             "output": "XenServer.box",
             "type": "vagrant",
             "vagrantfile_template": "Vagrantfile.template"
         },
         {
+	    "only": ["virtualbox-iso"],
             "type": "atlas",
             "artifact": "xenserver/dundee-beta",
             "artifact_type": "vagrant.box",
